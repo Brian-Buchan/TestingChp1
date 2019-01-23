@@ -3,20 +3,18 @@ using Xunit;
 
 namespace ListUnion.Tests
 {
-    public class Vehicle
+    public class CastTesting
     {
         [Fact]
-        public void Vehicle_TruckComparisonEvaluates()
+        public void Clone_TruckComparisonEvaluates()
         {
             // Arrange
             Truck suv = new Truck(4);
-            Truck co = suv.Clone();
+            Truck co = (Truck)suv.Clone();
             bool[] expected = { true, true };
 
             // Act
-            bool[] actual = new bool[2];
-            actual[0] = (suv.x == co.x);
-            actual[1] = (suv.GetType() == co.GetType());
+            bool[] actual = new bool[] { (suv.x == co.x), (suv.GetType() == co.GetType()) };
 
             // Assert
             Assert.Equal(expected, actual);
@@ -25,7 +23,7 @@ namespace ListUnion.Tests
 
 
         [Fact]
-        public void Vehicle_PointEqualsColorPoint()
+        public void Equals_PointEqualsColorPoint()
         {
             // Arrange
             Point P = new Point(1, 2);
@@ -39,7 +37,7 @@ namespace ListUnion.Tests
             Assert.Equal(expected, actual);
         }
         [Fact]
-        public void Vehicle_ColorPointEqualsPoint()
+        public void Equals_ColorPointEqualsPoint()
         {
             // Arrange
             Point P = new Point(1, 2);
@@ -53,7 +51,7 @@ namespace ListUnion.Tests
             Assert.Equal(expected, actual);
         }
         [Fact]
-        public void Vehicle_ColorPointDoesNotEqualDifferentColorPoint()
+        public void Equals_ColorPointDoesNotEqualDifferentColorPoint()
         {
             // Arrange
             ColorPoint cp1 = new ColorPoint(1, 2, Color.Red);
@@ -62,6 +60,35 @@ namespace ListUnion.Tests
 
             // Act
             bool actual = cp1.Equals(cp2);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+
+
+        [Fact]
+        public void Equals_DecimalsEquate()
+        {
+            // Arrange
+            BigDecimalTest BDT = new BigDecimalTest();
+            bool expected = true;
+
+            // Act
+            bool actual = BDT.x.Equals(BDT.y);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void CompareTo_DecimalsDontEquate()
+        {
+            // Arrange
+            BigDecimalTest BDT = new BigDecimalTest();
+            int expected = 0;
+
+            // Act
+            int actual = BDT.x.CompareTo(BDT.y);
 
             // Assert
             Assert.Equal(expected, actual);

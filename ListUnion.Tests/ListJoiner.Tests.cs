@@ -7,7 +7,7 @@ using Xunit;
 
 namespace ListUnion.Tests
 {
-    public class UnionizerTests
+    public class ListJoinerTests
     {
         List<string> TestList1 = new List<string>() {"joe", "mary"};
         List<string> TestList2 = new List<string>() {"mike", "justin"};
@@ -20,7 +20,7 @@ namespace ListUnion.Tests
             List<string> expected = ExpectedList;
 
             // Act
-            List<string> actual = Unionizer.Union(TestList1, TestList2);
+            List<string> actual = ListJoiner.Union(TestList1, TestList2);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -33,7 +33,7 @@ namespace ListUnion.Tests
             List<string> expected = TestList2;
 
             // Act
-            List<string> actual = Unionizer.Union(new List<string>(), TestList2);
+            List<string> actual = ListJoiner.Union(new List<string>(), TestList2);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -47,7 +47,7 @@ namespace ListUnion.Tests
             List<string> expected = TestList1;
 
             // Act
-            List<string> actual = Unionizer.Union(TestList1, new List<string>());
+            List<string> actual = ListJoiner.Union(TestList1, new List<string>());
 
             // Assert
             Assert.Equal(expected, actual);
@@ -61,7 +61,7 @@ namespace ListUnion.Tests
             List<string> expected = new List<string>();
 
             // Act
-            List<string> actual = Unionizer.Union(new List<string>(), new List<string>());
+            List<string> actual = ListJoiner.Union(new List<string>(), new List<string>());
 
             // Assert
             Assert.Equal(expected, actual);
@@ -75,15 +75,13 @@ namespace ListUnion.Tests
             List<string> expected = TestList1;
 
             // Act
-            List<string> actual = Unionizer.Union(TestList1, null);
+            List<string> actual = ListJoiner.Union(TestList1, null);
 
             // Assert
             Assert.Equal(expected, actual);
 
         }
-
-        // Test takes much longer than other tests to execute 40ms(low)/110ms(high) compared to 1ms
-        // TODO: find out why
+        
         [Fact]
         public void Union_1stListNull()
         {
@@ -91,7 +89,7 @@ namespace ListUnion.Tests
             List<string> expected = TestList2;
 
             // Act
-            List<string> actual = Unionizer.Union(null, TestList2);
+            List<string> actual = ListJoiner.Union(null, TestList2);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -105,7 +103,7 @@ namespace ListUnion.Tests
             List<string> expected = new List<string>();
 
             // Act
-            List<string> actual = Unionizer.Union(null, null);
+            List<string> actual = ListJoiner.Union(null, null);
 
             // Assert
             Assert.Equal(expected, actual);

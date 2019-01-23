@@ -31,10 +31,17 @@ namespace ListUnion
             Console.ReadKey();
 
             Console.Write("\nCombined List: ");
-            PrintList(Unionizer.Union(NamesA, NamesB));
+            PrintList(ListJoiner.Union(NamesA, NamesB));
 
             Console.Write("\nThank you!");
             Console.ReadKey();
+
+            //Console.Clear();
+            //Console.WriteLine("Check for Decimal Tests follows: press any key to continue...");
+            //Console.ReadKey();
+            //BigDecimalTest BDT = new BigDecimalTest();
+            //BDT.PrintLn();
+            //Console.ReadKey();
         }
 
         static void PrintList(List<string> list)

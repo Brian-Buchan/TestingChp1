@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ListUnion
 {
-    public class Unionizer
+    public class ListJoiner
     {
         public static List<string> Union(List<string> list1, List<string> list2)
         {

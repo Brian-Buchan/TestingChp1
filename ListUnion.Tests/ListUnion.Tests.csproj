@@ -59,8 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnionizerTests.cs" />
-    <Compile Include="Vehicle.Tests.cs" />
+    <Compile Include="ListJoiner.Tests.cs" />
+    <Compile Include="CastFaults.Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ListUnion\ListUnion.csproj">

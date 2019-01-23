@@ -4,24 +4,23 @@ using System.Drawing;
 
 namespace ListUnion
 {
-    public class Vehicle : ICloneable
+    public class CastFaults : ICloneable
     {
         public int x;
-        public Vehicle(int y) { x = y; }
+        public CastFaults(int y) { x = y; }
         public Object Clone()
         {
-            Object result = new Vehicle(x);
+            Object result = new CastFaults(x);
             return result;
         }
     }
-    public class Truck : Vehicle
+    public class Truck : CastFaults
     {
         public int y;
         public Truck(int z) : base(z) { y = z; }
-        public new Truck Clone()
+        public new Object Clone()
         {
-            Truck result = Clone();
-            result.y = y;
+            Object result = new Truck(y);
             return result;
         }
     }
@@ -30,17 +29,28 @@ namespace ListUnion
 
     public class BigDecimalTest
     {
-        decimal x = new decimal(1.0);
-        decimal y = new decimal(1.00);
+        public decimal x = new decimal(1.0);
+        public decimal y = new decimal(1.00);
+        public SortedSet<decimal> decimalTree = new SortedSet<decimal>();
+        public HashSet<decimal> decimalHash = new HashSet<decimal>();
 
-        //SortedSet<decimal> decimalTree = new SortedSet<decimal>();
-        //decimalTree.Add(x);
-        //decimalTree.Add(y);
+        public BigDecimalTest()
+        {
+            decimalTree.Add(x);
+            decimalTree.Add(y);
 
-        //HashSet<decimal> decimalHash = new HashSet<decimal>();
-        //decimalHash.add(x);
-        //decimalHash.add(y);
+            decimalHash.Add(x);
+            decimalHash.Add(y);
+        }
+
+        public void PrintLn()
+        {
+            Console.WriteLine("DecimalTree = " + decimalTree);
+            Console.WriteLine("DecimalHas = " + decimalHash);
+            Console.ReadKey();
+        }
     }
+
 
 
     public class Point
@@ -70,9 +80,10 @@ namespace ListUnion
 
         public override bool Equals(object obj)
         {
+            if (obj.GetType() == typeof(Point)) return (obj.Equals(this));
             if (!(obj.GetType() == typeof(ColorPoint))) return false;
             ColorPoint cp = (ColorPoint)obj;
-            return (base.Equals(cp) && (cp.color == this.color));
+            return (base.Equals(cp) && (cp.color == color));
         }
     }
 }
